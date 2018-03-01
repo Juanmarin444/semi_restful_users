@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+    </head>
+    <body>
+        <h1>Add a new user</h1>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <form action='/user/create' method='post'>
+            {% csrf_token %}
+            first name: <input type='text' name='first_name'>
+            last name: <input type='text' name='last_name'>
+            email: <input type='text' name='email'>
+            <input type='submit' value='create'> 
+        </form>
+        <a href='/'>Go Back</a>
+    </body>
+</html>
